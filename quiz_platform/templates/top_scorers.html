@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Scorers</title>
+    <link rel="stylesheet" href="{% static 'css/top_scorers.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>CODEX</h1>
+        </div>
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                &#9776;
+            </div>
+            <ul id="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                <li><a href="{% url 'top_scorers' %}">Top Scorers</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Top Scorers</h2>
+    {% for category, scores in top_scores.items %}
+        <h3>{{ category }} - Easy</h3>
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+            {% for score in scores.easy %}
+            <tr>
+                <td>{{ score.user.username }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>{{ category }} - Medium</h3>
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+            {% for score in scores.medium %}
+            <tr>
+                <td>{{ score.user.username }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>{{ category }} - Hard</h3>
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+            {% for score in scores.hard %}
+            <tr>
+                <td>{{ score.user.username }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+    <footer>
+        <p>&copy; 2025 Codex Quiz Platform. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            this.classList.toggle('open'); 
+            document.querySelector('#nav-links').classList.toggle('open');  
+        });
+    </script>
+    
+    
+    
+</body>
+</html>

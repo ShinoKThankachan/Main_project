@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>CODEX</h1>
+        </div>
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">
+                &#9776;
+            </div>
+            <ul id="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                <li><a href="{% url 'top_scorers' %}">Top Scorers</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Congratulations!</h1>
+    <div class="a">
+    <p>Your score is: {{ score }}</p></div>
+    <div class="b">
+        <p>
+            <form action="{% url 'quiz_home' %}" method="get">
+                <button type="submit">Take Another Quiz</button>
+            </form>
+            
+        </p>
+    </div>
+    <footer>
+        <p>&copy; 2025 Codex Quiz Platform. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            this.classList.toggle('open'); 
+            document.querySelector('#nav-links').classList.toggle('open');  
+        });
+    </script>
+</body>
+</html>

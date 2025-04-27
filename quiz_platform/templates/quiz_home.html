@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Categories</title>
+    <link rel="stylesheet" href="{% static 'css/quiz_home.css' %}">
+  
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>CODEX</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'profile' %}">My Profile</a></li>
+                <li><a href="{% url 'top_scorers' %}">Top Scorers</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main">
+        <img src="{% static 'images/eea752365c06473f8ceeddb8e4c66609.png' %}" alt="" id="img1">
+        <h3>Codex Quiz</h3>
+        <p>A quiz based on frontend, backend, and frameworks can help developers assess their expertise across different areas of web development. The frontend section can include questions on HTML, CSS, JavaScript, and popular libraries like React, Vue, or Angular, covering topics such as UI/UX, state management, and responsive design. The backend section, with a focus on Python, can test knowledge of frameworks like Django and Flask, database management with SQLAlchemy or PostgreSQL, API development, authentication, and server-side logic. The frameworks category can explore both frontend and backend frameworks, comparing their features, use cases, and best practices. This quiz can be a great tool for developers to evaluate their skills, identify knowledge gaps, and stay updated with modern development trends.</p>
+    </div>
+    <h1>Select a Quiz Category</h1>
+    <div class="category-buttons">
+        <a href="{% url 'quiz' 1 1 %}"><button class="btn">Front-End</button></a>
+        <a href="{% url 'quiz' 2 1 %}"><button class="btn">Back-End</button></a>
+        <a href="{% url 'quiz' 3 1 %}"><button class="btn">Framework</button></a>
+    </div>
+    <footer>
+        <p>&copy; 2025 Codex Quiz Platform. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

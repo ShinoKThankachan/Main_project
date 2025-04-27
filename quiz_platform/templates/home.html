@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Quiz Platform</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="a"><h1>Welcome to Codex Quiz Platform</h1></div>
+
+    <nav>
+        <h2 class="logo">CODEX Quiz</h2>
+        <ul>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Quiz Section -->
+    <div class="quiz-section">
+        <h2>Test Your Knowledge with Our Quizzes</h2>
+        <p>Challenge yourself with engaging quizzes designed for developers! Choose from frontend, backend, and frameworks quizzes to test your skills. Whether you're brushing up on HTML, CSS, and JavaScript or diving into backend technologies like Python, Django, and databases, we have something for everyone.</p>
+        <button><a href="{% url 'quiz_home' %}">Participate in Quiz</a></button> 
+    </div>
+
+    <!-- Top Scorers Section -->
+    <div class="top-scorers-section">
+        <h2>Compete and See the Top Scorers</h2>
+        <p>Think you have what it takes to be the best? Check out the leaderboard to see the top scorers and compare your performance. Strive to be on top and improve your ranking with every attempt!</p>
+        <button><a href="{% url 'top_scorers' %}">View Top Scorers</a></button> 
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+        <h2>We Value Your Feedback</h2>
+        <p>Your feedback helps us improve the Codex Quiz experience. Let us know your thoughts, suggestions, or any issues you've faced while using our platform. We appreciate your input!</p>
+        <button><a href="{% url 'feedback' %}">Share Your Feedback</a></button> 
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Codex Quiz Platform. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

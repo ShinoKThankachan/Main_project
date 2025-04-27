@@ -1,0 +1,136 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc); 
+    color: #fff;
+    min-height: 100vh;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    padding: 5px 20px; 
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #fff;
+    height: 60px; 
+    position: sticky;
+    top: 0; 
+    z-index: 1000;
+}
+
+
+header .logo h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9a9e;
+}
+
+
+.main {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.main img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.main h3 {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+.main p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 40px 0;
+    color: #fff;
+}
+
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    margin: 20px 0;
+}
+
+a {
+    display: inline-block;
+    margin: 20px;
+}
+
+.btn {
+    background-color: #ffcc00;
+    color: black;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background: #ffa500;
+    transform: scale(1.05);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+

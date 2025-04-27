@@ -1,0 +1,138 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc); 
+    color: #fff;
+    min-height: 100vh;
+    
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    padding: 5px 20px; 
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #fff;
+    height: 60px; 
+    position: sticky;
+    top: 0; 
+    z-index: 1000;
+}
+
+
+header .logo h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9a9e;
+}
+h2 {
+    text-align: center;
+    font-size: 3em;
+    margin: 60px 0;
+    color: #fff;
+}
+
+h3 {
+    font-size: 2em;
+    margin: 20px 0;
+    color: #fff;
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto 40px;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin: 20px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    background-color: #ffcc00;
+    color: black;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.3s;
+    display: block;
+    margin: 20px auto;
+}
+
+button:hover {
+    background: #ffa500;
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
