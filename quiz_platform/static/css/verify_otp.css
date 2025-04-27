@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for the background */
     color: #333;
     display: flex;
     justify-content: center;
@@ -16,14 +17,16 @@ body {
     padding: 20px;
 }
 
-h1 {
+h2 {
     color: #2c3e50;
     margin-bottom: 20px;
     font-size: 2rem;
     font-weight: 600;
+    text-align: center;
 }
 
-.login-container {
+/* OTP Form Styling */
+form {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -32,15 +35,10 @@ h1 {
     max-width: 400px;
     box-sizing: border-box;
     margin-top: 20px;
-  }
-  
-  /* Login Form */
-  .login-form {
-    width: 100%;
-  }
-  
-  .login-form input[type="text"],
-  .login-form input[type="password"] {
+}
+
+/* Form Input Fields */
+form input[type="text"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -48,15 +46,15 @@ h1 {
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
-  }
-  
-  .login-form input[type="text"]:focus,
-  .login-form input[type="password"]:focus {
+}
+
+form input[type="text"]:focus {
     border-color: #2980b9;
     outline: none;
-  }
-  
-  .login-form input[type="submit"] {
+}
+
+/* Submit Button */
+form input[type="submit"] {
     background-color: #2980b9;
     color: white;
     border: none;
@@ -66,15 +64,19 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .login-form input[type="submit"]:hover {
-    background-color: #3498db;
-  }
-
-p{
-    color: rgb(11, 11, 11);
 }
+
+form input[type="submit"]:hover {
+    background-color: #3498db;
+}
+
+/* Message Container */
+p {
+    color: #333;
+    font-size: 1rem;
+    text-align: center;
+}
+
 p a {
     color: #ff8c01;
     text-decoration: none;
@@ -86,6 +88,7 @@ p a:hover {
     color: #ffa500;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -96,20 +99,16 @@ p a:hover {
         max-width: 90%;
     }
 
-    h1 {
+    h2 {
         font-size: 1.8rem;
     }
 
-    form button {
-        font-size: 1.1rem;
-    }
-
-    form input[type="text"],
-    form input[type="password"],
-    form input[type="email"] {
+    form input[type="text"] {
         padding: 10px;
         font-size: 1rem;
     }
+
+    form input[type="submit"] {
+        font-size: 1.1rem;
+    }
 }
-
-

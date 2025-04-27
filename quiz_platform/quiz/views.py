@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from .models import *
+import random
+from django.contrib import auth
 from .forms import RegisterForm, FeedbackForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -10,39 +12,48 @@ from django.contrib import messages
 
 def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            # DO NOT create a Score here
-            send_mail(
-                'Welcome to Quiz Platform!',
-                'Thank you for registering. Start taking quizzes now!',
-                'no-reply@quizplatform.com',
-                [user.email],
-                fail_silently=False,
-            )
-            return redirect('login')
-    else:
-        form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        confpassword = request.POST['confpassword']
+
+        if password != confpassword:
+            messages.error(request, "Passwords do not match.")
+            return redirect('register')
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists.")
+            return redirect('register')
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already in use.")
+            return redirect('register')
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        messages.success(request, "Registration successful. Please login.")
+        return redirect('login')
+
+    return render(request, 'register.html')
 
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home') 
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+
+            if user.is_superuser:
+                return redirect('admin_home')  
             else:
-                messages.error(request, 'Invalid username or password')
+                return redirect('home')
         else:
-            messages.error(request, 'Invalid form submission')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+            messages.error(request, "Invalid credentials")
+            return redirect('login')
+
+    return render(request, 'login.html')
 
 @login_required
 def profile(request):
@@ -138,3 +149,55 @@ def home(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+def forgot_password_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        otp = random.randint(100000, 999999)
+
+        request.session['reset_email'] = email
+        request.session['otp'] = otp
+
+        send_mail(
+            subject='Your OTP Code',
+            message=f'Your OTP is {otp}',
+            from_email='youremail@example.com',
+            recipient_list=[email],
+            fail_silently=False,
+        )
+
+        messages.success(request, 'OTP has been sent to your email.')
+        return redirect('verify_otp')
+
+    return render(request, 'forgot_password.html')
+
+def verify_otp(request):
+    if request.method == 'POST':
+        entered_otp = request.POST.get('otp')
+        if str(request.session.get('otp')) == entered_otp:
+            messages.success(request, 'OTP verified. You can now reset your password.')
+            return redirect('reset_password')
+        else:
+            messages.error(request, 'Invalid OTP. Please try again.')
+
+    return render(request, 'verify_otp.html')
+
+
+# Password Reset View
+def reset_password(request):
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        email = request.session.get('reset_email')
+
+        user = User.objects.filter(email=email).first()
+        if user:
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, "Password has been reset. You can now log in.")
+            return redirect('login')
+        else:
+            messages.error(request, "Something went wrong. Please try again.")
+            return redirect('forgot_password')
+
+    return render(request, 'reset_password.html')
