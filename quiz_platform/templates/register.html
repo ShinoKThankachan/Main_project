@@ -30,6 +30,19 @@
             <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
         </div>
     </div>
+    <script>
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+            const confPassword = document.getElementById("confpassword").value;
+        
+            if (password !== confPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+        </script>
+        
 </body>
 
 </html>
