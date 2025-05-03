@@ -1,96 +1,95 @@
-/* Global Reset */
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for the background */
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Matching the color theme */
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
     flex-direction: column;
-    padding: 20px;
 }
 
+/* Header */
 h2 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    font-weight: 600;
-    text-align: center;
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(0, 195, 255, 0.8);
 }
 
-/* Reset Password Form Styling */
+/* Form */
 form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 400px;
-    box-sizing: border-box;
-    margin-top: 20px;
 }
 
-/* Form Input Fields */
-form input[type="password"] {
+/* Input field */
+input[type="password"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border: 2px solid #00bcd4; /* Matching color theme */
+    border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-form input[type="password"]:focus {
-    border-color: #2980b9;
     outline: none;
+    transition: all 0.3s ease;
 }
 
-/* Submit Button */
-form button {
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 1rem;
+input[type="password"]:focus {
+    border-color: #0097a7; /* Matching color theme */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Button */
+button {
     width: 100%;
-    border-radius: 5px;
+    padding: 12px;
+    background-color: #00bcd4; /* Matching color theme */
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
 }
 
-form button:hover {
-    background-color: #3498db;
+button:hover {
+    background-color: #0097a7; /* Matching color theme */
+    transform: scale(1.05);
 }
 
-/* Responsive Styles */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
-    }
-
-    form {
         padding: 20px;
-        max-width: 90%;
     }
 
     h2 {
         font-size: 1.8rem;
     }
 
-    form button {
-        font-size: 1.1rem;
+    form {
+        width: 100%;
+        padding: 30px;
     }
 
-    form input[type="password"] {
-        padding: 10px;
+    button {
         font-size: 1rem;
     }
 }

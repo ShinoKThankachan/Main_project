@@ -1,172 +1,151 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #fff;
+    padding: 20px;
     min-height: 100vh;
 }
 
-
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-bottom: 2px solid #fff;
-    height: 60px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    margin-bottom: 30px;
 }
 
-header .logo h1 {
-    font-size: 2.5em;
-    letter-spacing: 2px;
+.logo h1 {
+    font-size: 2rem;
+    color: #00c3ff;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
+    gap: 25px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 0.9em;
     font-weight: 500;
-    text-transform: uppercase;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ff9a9e;
+    color: #00c3ff;
 }
 
+/* Mobile nav */
 .menu-icon {
-    display: none; 
-    font-size: 2em;
-    cursor: pointer;
+    display: none;
+    font-size: 26px;
     color: #fff;
-    margin-left: auto;
+    cursor: pointer;
 }
 
+/* Main Headings */
 h1 {
     text-align: center;
-    font-size: 3em;
-    margin: 60px 0;
-    color: #fff;
+    font-size: 2.5rem;
+    color: #00c3ff;
+    text-shadow: 0 0 10px #00c3ff;
+    margin-bottom: 20px;
 }
 
-.a p {
+/* Score Box */
+.a {
     text-align: center;
-    font-size: 1.5em;
-    margin: 20px 0;
+    font-size: 1.8rem;
     color: #fff;
-    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    margin: 0 auto;
+    border-radius: 15px;
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Button Container */
 .b {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin-top: 30px;
 }
 
-.b form button {
-    background-color: #ffcc00;
-    color: black;
-    font-size: 1.2em;
-    padding: 15px 30px;
+.b button {
+    background-color: #00c3ff;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 195, 255, 0.4);
 }
 
-.b form button:hover {
-    background: #ffa500;
+.b button:hover {
+    background-color: #009acd;
     transform: scale(1.05);
 }
 
-.b form button:focus {
-    outline: none;
-}
-
+/* Footer */
 footer {
+    margin-top: 50px;
     text-align: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color: #fff;
+    color: #ccc;
+    font-size: 0.9rem;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    header .logo h1 {
-        font-size: 2em;
-    }
-
     nav ul {
-        display: none; 
-        width: 100%;
-        margin-top: 10px;
+        display: none;
         flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.7);
+        gap: 15px;
         position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 10px 0;
+        top: 80px;
+        right: 30px;
+        background: rgba(0, 0, 0, 0.85);
+        padding: 20px;
+        border-radius: 12px;
     }
 
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    nav ul li a {
-        padding: 10px;
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .menu-icon.open + #nav-links {
-        display: flex; 
+    nav ul.open {
+        display: flex;
     }
 
     .menu-icon {
-        display: block; 
-        position: absolute;
-        top: 20px;
-        right: 20px; 
+        display: block;
     }
-}
 
-@media (min-width: 1024px) {
     h1 {
-        font-size: 3.5em;
+        font-size: 2rem;
     }
 
-    .b form button {
-        font-size: 1.5em;
+    .a {
+        font-size: 1.5rem;
+        padding: 20px;
+    }
+
+    .b button {
+        width: 80%;
     }
 }
-

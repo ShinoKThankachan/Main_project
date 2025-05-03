@@ -9,6 +9,7 @@ from .forms import RegisterForm, FeedbackForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.db.models import Max
 
 def register(request):
     if request.method == 'POST':
@@ -129,18 +130,19 @@ def feedback(request):
 def top_scorers(request):
     categories = QuizCategory.objects.all()
     top_scores = {}
+
     for category in categories:
-        top_scores[category.name] = {
-            'easy': Score.objects.filter(category=category, difficulty__id=1)
-                                .exclude(user__is_superuser=True)
-                                .order_by('-score')[:10],
-            'medium': Score.objects.filter(category=category, difficulty__id=2)
-                                .exclude(user__is_superuser=True)
-                                .order_by('-score')[:10],
-            'hard': Score.objects.filter(category=category, difficulty__id=3)
-                                .exclude(user__is_superuser=True)
-                                .order_by('-score')[:10],
-        }
+        top_scores[category.name] = {}
+        for difficulty_id, difficulty_name in [(1, 'easy'), (2, 'medium'), (3, 'hard')]:
+            scores = (
+                Score.objects.filter(category=category, difficulty__id=difficulty_id)
+                .exclude(user__is_superuser=True)
+                .values('user', 'user__username')  # get user ID and username
+                .annotate(max_score=Max('score'))  # get the highest score
+                .order_by('-max_score')[:10]       # top 10 scores
+            )
+            top_scores[category.name][difficulty_name] = scores
+
     return render(request, 'top_scorers.html', {'top_scores': top_scores})
 
 def home(request):

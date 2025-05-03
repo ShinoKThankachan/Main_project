@@ -23,61 +23,105 @@
             </ul>
         </nav>
     </header>
+
     <h2>Top Scorers</h2>
+
     {% for category, scores in top_scores.items %}
-        <h3>{{ category }} - Easy</h3>
-        <table>
-            <tr>
-                <th>User</th>
-                <th>Score</th>
-            </tr>
-            {% for score in scores.easy %}
-            <tr>
-                <td>{{ score.user.username }}</td>
-                <td>{{ score.score }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="category">
+            <h3>{{ category }}</h3>
 
-        <h3>{{ category }} - Medium</h3>
-        <table>
-            <tr>
-                <th>User</th>
-                <th>Score</th>
-            </tr>
-            {% for score in scores.medium %}
-            <tr>
-                <td>{{ score.user.username }}</td>
-                <td>{{ score.score }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+            <!-- Easy Difficulty -->
+            <div class="difficulty-section">
+                <h4>Easy Difficulty</h4>
+                {% if scores.easy %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for score in scores.easy %}
+                            <tr>
+                                <td>{{ score.user__username }}</td>
+                                <td>{{ score.max_score }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr><td colspan="2">No scores available</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p>No scores available for Easy difficulty</p>
+                {% endif %}
+            </div>
 
-        <h3>{{ category }} - Hard</h3>
-        <table>
-            <tr>
-                <th>User</th>
-                <th>Score</th>
-            </tr>
-            {% for score in scores.hard %}
-            <tr>
-                <td>{{ score.user.username }}</td>
-                <td>{{ score.score }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+            <!-- Medium Difficulty -->
+            <div class="difficulty-section">
+                <h4>Medium Difficulty</h4>
+                {% if scores.medium %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for score in scores.medium %}
+                            <tr>
+                                <td>{{ score.user__username }}</td>
+                                <td>{{ score.max_score }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr><td colspan="2">No scores available</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p>No scores available for Medium difficulty</p>
+                {% endif %}
+            </div>
+
+            <!-- Hard Difficulty -->
+            <div class="difficulty-section">
+                <h4>Hard Difficulty</h4>
+                {% if scores.hard %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for score in scores.hard %}
+                            <tr>
+                                <td>{{ score.user__username }}</td>
+                                <td>{{ score.max_score }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr><td colspan="2">No scores available</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p>No scores available for Hard difficulty</p>
+                {% endif %}
+            </div>
+        </div>
     {% endfor %}
+
     <footer>
         <p>&copy; 2025 Codex Quiz Platform. All Rights Reserved.</p>
     </footer>
+
     <script>
         document.querySelector('.menu-icon').addEventListener('click', function() {
             this.classList.toggle('open'); 
             document.querySelector('#nav-links').classList.toggle('open');  
         });
     </script>
-    
-    
-    
 </body>
 </html>
